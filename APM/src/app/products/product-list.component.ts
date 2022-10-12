@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { catchError, EMPTY, Observable } from 'rxjs';
 import { ProductCategory } from '../product-categories/product-category';
 
 import { Product } from './product';
@@ -8,9 +8,10 @@ import { ProductService } from './product.service';
 
 @Component({
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
   pageTitle = 'Product List';
   errorMessage = '';
   categories: ProductCategory[] = [];
